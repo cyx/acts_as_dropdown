@@ -1,4 +1,4 @@
-2.0.1 (2008-10-10)
+2.0.2 (2008-10-10)
  * mirror'd code from http://acts-as-dropdown.googlecode.com/svn/trunk/ (rev 17) to github
  * added gemspec to build as gem
  
