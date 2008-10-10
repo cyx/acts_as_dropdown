@@ -1,3 +1,6 @@
+2.0.3
+ * fix class Array extension from module in the gem (it worked as a plugin, but failed as a gem)
+
 2.0.2 (2008-10-10)
  * mirror'd code from http://acts-as-dropdown.googlecode.com/svn/trunk/ (rev 17) to github
  * added gemspec to build as gem

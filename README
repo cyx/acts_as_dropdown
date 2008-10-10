@@ -4,7 +4,7 @@ This plugin allows any ActiveRecord object to easily be used to create a HTML se
 
 The github repository gbdev-acts_as_dropdown was copied from http://acts-as-dropdown.googlecode.com/svn/trunk/ (rev 17) on 2008-10-10
 
-The only modifications in gbdev-acts_as_dropdown are to make the plugin a gem.
+The only current modifications in gbdev-acts_as_dropdown from the original are to make the plugin work as a gem and small reorganizing.
 
 == Resources
 

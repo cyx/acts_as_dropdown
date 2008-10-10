@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name    = 'acts_as_dropdown'
-  s.version = '2.0.2'
+  s.version = '2.0.3'
   s.date    = '2008-10-10'
 
   s.summary = "Adds the ability to easily create an options list out of an ActiveRecord object"
   s.description = "A Rails plugin that adds the ability to easily create an options list out of an ActiveRecord object"
   
-  s.authors  = ["DeLynn Berry"]
-  s.email    = ["delynn@gmail.com"]
+  s.authors  = ["DeLynn Berry", "John Dell"]
+  s.email    = ["delynn@gmail.com", "spovich@gmail.com"]
   s.homepage = 'http://github.com/gbdev/acts_as_dropdown'
   s.has_rdoc = true  
 
