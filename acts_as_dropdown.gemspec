@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
              'README',
              'RUNNING_UNIT_TESTS',
              'lib/acts_as_dropdown.rb',
-             'lib/dropdown.rb',
              'test/abstract_unit.rb',
              'test/active_record_dropdown_test.rb',
              'test/array_dropdown_test.rb',
