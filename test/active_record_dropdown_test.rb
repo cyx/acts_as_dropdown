@@ -60,11 +60,11 @@ class ActiveRecordDropdownTest < Test::Unit::TestCase  # :nodoc:
                  State.to_dropdown(:text => "id", :value => "abbreviation", :order => "abbreviation DESC", :conditions => "id < 4")
   end
 
-  def test_class_method_include_blank
+  def test_class_method_prompt
     assert_equal [["", ""], ["Alabama", 1], ["Alaska", 2], ["Arizona", 3], ["California", 4], ["Colorado", 5]],
-                 State.to_dropdown(:conditions => nil, :order => "name", :include_blank => true)
+                 State.to_dropdown(:conditions => nil, :order => "name", :prompt => true)
     assert_equal [["Select a State", ""], ["Alabama", 1], ["Alaska", 2], ["Arizona", 3], ["California", 4], ["Colorado", 5]],
-                 State.to_dropdown(:conditions => nil, :order => "name", :include_blank => "Select a State")
+                 State.to_dropdown(:conditions => nil, :order => "name", :prompt => "Select a State")
   end
 
   def test_class_method_different_value

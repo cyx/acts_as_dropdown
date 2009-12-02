@@ -7,7 +7,7 @@
  
 2.0.0
  * better testing support that now uses a sqlite3 database as the default.
- * introduced the :include_blank option that works in a similar fashion to the select helper's, but also allow you to 
+ * introduced the :prompt option that works in a similar fashion to the select helper's, but also allow you to 
    specify what appears as the text of the blank option.
  * allowing customization of all ActiveRecord::Base#find options.
  * fix a bug that caused the class attributes to be forgotten, requiring that all options be specified for every to_dropdown call.

@@ -19,7 +19,7 @@ class ArrayDropdownTest < Test::Unit::TestCase  # :nodoc:
     assert_equal [["Alabama", "AL"], ["Alaska", "AK"], ["Arizona", "AZ"], ["California", "CA"], ["Colorado", "CO"]], states.to_dropdown("name", "abbreviation")
   end
 
-  def test_array_to_dropdown_include_blank
+  def test_array_to_dropdown_prompt
     states = State.find(:all, :order => "id")
     assert_equal [["", ""], ["AL", 1], ["AK", 2], ["AZ", 3], ["CA", 4], ["CO", 5]], states.to_dropdown("abbreviation", "id", true)
     assert_equal [["Select a State", ""], ["AL", 1], ["AK", 2], ["AZ", 3], ["CA", 4], ["CO", 5]], states.to_dropdown("abbreviation", "id", "Select a State")

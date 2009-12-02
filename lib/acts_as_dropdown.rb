@@ -26,7 +26,7 @@ module DeLynnBerry
     end
 
     module ClassMethods
-      attr_accessor :dropdown_text_attr, :dropdown_value_attr, :include_blank, :find_arguments
+      attr_accessor :dropdown_text_attr, :dropdown_value_attr, :prompt, :find_arguments
 
       # Specify this act if you want to your model be used easily with the <tt>select</tt> form helper. By default the
       # plugin assumes you want to use the class' primary key for the option value and the <tt>name</tt> attribute for
@@ -67,7 +67,7 @@ module DeLynnBerry
       #                             the option tag (defaults to 'name').
       # * <tt>value</tt>          - This is the class attribute (database column) that will be used to fill in the option's
       #                             value parameter (defaults to the class' primary_key).
-      # * <tt>include_blank</tt>  - Specify true if you'd like to have a blank item added to the beginning of your list, or
+      # * <tt>prompt</tt>  - Specify true if you'd like to have a blank item added to the beginning of your list, or
       #                             a string that will be placed in the value attribute of the option group.
       #
       # All of ActiveRecord#find options are available as well:
@@ -89,7 +89,7 @@ module DeLynnBerry
 
         self.dropdown_text_attr   = options.delete(:text)
         self.dropdown_value_attr  = options.delete(:value)
-        self.include_blank        = options.delete(:include_blank)
+        self.prompt        = options.delete(:prompt)
         self.find_arguments       = options
       end
     
@@ -122,14 +122,14 @@ module DeLynnBerry
         options = args.empty? ? {} : args.pop
         text    = options.delete(:text)
         value   = options.delete(:value)
-        blank   = options.delete(:include_blank)
+        blank   = options.delete(:prompt)
         options.merge!(:order => value) if (!value.nil? && self.dropdown_value_attr != value) && options.has_key?(:order) == false
 
         items = find(:all, options.empty? ? self.find_arguments : options).to_dropdown(text   || self.dropdown_text_attr,
                                                                                        value  || self.dropdown_value_attr)
 
-        if args.empty? && self.include_blank
-          items.insert(0, self.include_blank.kind_of?(String) ? [self.include_blank, ""] : ["", ""])
+        if args.empty? && self.prompt
+          items.insert(0, self.prompt.kind_of?(String) ? [self.prompt, ""] : ["", ""])
         elsif blank
           items.insert(0, blank.kind_of?(String) ? [blank, ""] : ["", ""])
         end
@@ -150,18 +150,18 @@ class Array #:nodoc:
   #
   # * <tt>text</tt>           - This is the attribute that will be used as the text/label for the option tag (defaults to 'name').
   # * <tt>value</tt>          - This is the attribute that will be used to fill in the option's value parameter (defaults to 'id').
-  # * <tt>include_blank</tt>  - Specify true if you'd like to have a blank item added to the beginning of your aray, or
+  # * <tt>prompt</tt>  - Specify true if you'd like to have a blank item added to the beginning of your aray, or
   #                             a string that will be placed in the value attribute of the option group.
   #
   # === Example
   #   >> @states = State.find(:all, :order => "id")
   #   >> @states.to_dropdown 
   #   => [["Alabama", 1], ["Alaska", 2], ["Arizona", 3], ["California", 4], ["Colorado", 5]]
-  def to_options_for_select(text = :name, value = :id, include_blank = false)
+  def to_options_for_select(text = :name, value = :id, prompt = false)
     items = self.collect { |x| [x.send(text.to_sym), x.send(value.to_sym)] }
 
-    if include_blank
-      items.insert(0, include_blank.kind_of?(String) ? [include_blank, ""] : ["", ""])
+    if prompt
+      items.insert(0, prompt.kind_of?(String) ? [prompt, ""] : ["", ""])
     end
 
     items
